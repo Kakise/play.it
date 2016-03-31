@@ -1,1 +1,1 @@
-# .-play.it
+# ./play.it
