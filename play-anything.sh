@@ -59,8 +59,7 @@ build_pkg_arch(){
 	printf '…\n'
 	mkdir -p "${PKG_TMPDIR}"
 	cd ${dir}
-	tar -cf - .PKGINFO * | xz -c -z - > ${desc}-${vers}.pkg.tar.xz
-	# tar cJf ${desc}-${vers}.tar.xz * .PKGINFO
+	tar -cf - .PKGINFO * | xz -0 -c -z - > ${desc}-${vers}.pkg.tar.xz
 	mv "${desc}-${vers}.pkg.tar.xz" "${s_dir}/${desc}-${vers}.pkg.tar.xz"
 	rm -rf "${dir}" "${PKG_TMPDIR}"
 }
