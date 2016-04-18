@@ -1425,6 +1425,10 @@ local extra_infos="$9"
 local size="$(du -cks $(realpath ${dir}/* | grep -v DEBIAN$) | tail -n1 | cut -f1)"
 local maint="$(whoami)@$(hostname)"
 local target="${dir}/.PKGINFO"
+local tLend=${#deps[@]}
+local tLenc=${#conflicts[@]}
+local tLenr=${#recs[@]}
+
 rm -rf "${dir}/DEBIAN"
 if [ "${extra_infos}" = 'arch' ]; then
 	printf '%s %s (%s)…\n' "$(l10n 'write_pkg_debian')" "$(printf '%s' "${desc}" | head -n1)" "${arch}"
@@ -1440,13 +1444,19 @@ builddate = $(date +"%m%d%Y")
 size = ${size}
 arch = ${arch}
 EOF
-if [ -n "${conflicts}" ]; then
-	printf 'Conflicts: %s\n' "${conflicts}" >> "${target}"
-fi
-printf "depends=${deps}" >> "${target}"
-if [ -n "${recs}" ]; then
-	printf 'Recommends: %s\n' "${recs}" >> "${target}"
-fi
+for (( i=0; i<${tLenr}; i++ ));
+do
+  printf "optdepends=${recs[$i]}" >> "${target}"
+done
+for (( i=0; i<${tLenc}; i++ ));
+do
+  printf "conflicts=${conflicts[$i]}" >> "${target}"
+done
+for (( i=0; i<${tLend}; i++ ));
+do
+  printf "depends=${deps[$i]}" >> "${target}"
+done
+
 }
 
 
