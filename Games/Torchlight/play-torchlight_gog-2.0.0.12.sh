@@ -66,7 +66,7 @@ PKG1_ARCH='x86_64'
 PKG1_CONFLICTS=''
 PKG1_RECS=''
 PKG1_DESC="${GAME_NAME}"
-PKG1_DEPS="wine"
+PKG1_DEPS=("wine")
 
 # Load common functions
 
