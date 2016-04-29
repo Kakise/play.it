@@ -89,7 +89,7 @@ fi
 if [[ -z "$(lsmod | grep -i "snd_pcm_oss" | head -1 | cut -c1-11)" ]]
 	sudo modprobe snd_pcm_oss
 	sudo touch /etc/modules-load.d/playit-snd_pcm_oss.conf
-	echo "snd_pcm_oss" > /etc/modules-load.d/playit-snd_pcm_oss.conf
+	sudo sh -c "echo \"snd_pcm_oss\" > /etc/modules-load.d/playit-snd_pcm_oss.conf"
 fi
 
 # Load common functions
