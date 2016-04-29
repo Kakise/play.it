@@ -1450,11 +1450,11 @@ do
 done
 for (( i=0; i<${tLenc}; i++ ));
 do
-  printf "conflicts=${conflicts[$i]}\n" >> "${target}"
+  printf "conflicts = ${conflicts[$i]}\n" >> "${target}"
 done
 for (( i=0; i<${tLend}; i++ ));
 do
-  printf "depends=${deps[$i]}\n" >> "${target}"
+  printf "depends = ${deps[$i]}\n" >> "${target}"
 done
 
 }
