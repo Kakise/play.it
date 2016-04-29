@@ -57,10 +57,10 @@ build_pkg_arch(){
 	printf '…\n'
 	mkdir -p "${PKG_TMPDIR}"
 	cd ${dir}
-	tar -cf - .PKGINFO * | xz -0 -c -z - > ${desc}-${vers}.pkg.tar.xz
+	tar -cf - .PKGINFO * | xz -0 -c -z - > "${desc}-${vers}.pkg.tar.xz"
 	mv "${desc}-${vers}.pkg.tar.xz" "${s_dir}/${desc}-${vers}.pkg.tar.xz"
 	rm -rf "${dir}" "${PKG_TMPDIR}"
-        cd ${s_dir}
+    cd ${s_dir}
 }
 
 
@@ -444,7 +444,7 @@ local vers="$2"
 shift 1
 printf '%s %s %s:\npacman -U' "$(l10n 'install_instructions_1')" "$(printf '%s' "${desc}" | head -n1)" "$(l10n 'install_instructions_2')"
 while [ -n "$1" ]; do
-	printf ' %s' "${desc}-${vers}.pkg.tar.gz"
+	printf ' %s' "${desc}-${vers}.pkg.tar.xz"
 	shift 1
 done
 }
@@ -1446,15 +1446,15 @@ arch = ${arch}
 EOF
 for (( i=0; i<${tLenr}; i++ ));
 do
-  printf "optdepends=${recs[$i]}" >> "${target}"
+  printf "optdepends = ${recs[$i]}\n" >> "${target}"
 done
 for (( i=0; i<${tLenc}; i++ ));
 do
-  printf "conflicts=${conflicts[$i]}" >> "${target}"
+  printf "conflicts=${conflicts[$i]}\n" >> "${target}"
 done
 for (( i=0; i<${tLend}; i++ ));
 do
-  printf "depends=${deps[$i]}" >> "${target}"
+  printf "depends=${deps[$i]}\n" >> "${target}"
 done
 
 }
@@ -1552,9 +1552,9 @@ interruption:fr:Script interrompu
 interruption_icons:en:Game icons will not be extracted
 interruption_icons:fr:Les icônes du jeu ne seront pas extraites
 movies_build_deps:en:The following packages are required to build movie support
-movies_build_deps:fr:Les paquets suivants sont nécessaires pour compiler la gestion des films 
+movies_build_deps:fr:Les paquets suivants sont nécessaires pour compiler la gestion des films 
 movies_disabled:en:Movies handling disabled; add --with-movies to enable it
-movies_disabled:fr:Gestion des films désactivée ; ajoutez --with-movies pour l’activer
+movies_disabled:fr:Gestion des films désactivée ; ajoutez --with-movies pour l’activer
 movies_enabled:en:Movies handling enabled
 movies_enabled:fr:Gestion des films activée
 not_found:en:not found
@@ -1574,11 +1574,11 @@ pkgs_not_found_2:fr:Installez l’un d’entre eux avant de lancer ce script
 print_done:en:Done.
 print_done:fr:Fait.
 print_error:en:Error:
-print_error:fr:Erreur :
+print_error:fr:Erreur :
 print_wait:en:This might take several minutes.
 print_wait:fr:Cette étape peut durer plusieurs minutes.
 print_warning:en:Warning:
-print_warning:fr:Avertissement :
+print_warning:fr:Avertissement :
 set_checksum:en:Checksum method set to
 set_checksum:fr:Méthode de vérification du fichier cible définie à 
 set_compression:en:Compression method set to
