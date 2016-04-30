@@ -14,11 +14,7 @@
 ###
 
 ###
-# conversion script for the Torchlight installer sold on GOG.com
-# build a .deb or .pkg.tar.gz package from the Windows installer
-# tested on Debian, should work on any .deb-based distribution
-# tested on Archlinux, should work on any pacman based distribution
-# script version 20151127.1
+# Sound fix for Sid Meier's Alpha Centauri. Basically automates the loading of "snd_pcm_oss" module.
 #
 # send your bug reports to vv221@dotslashplay.it or amadren@protonmail.ch if it's arch related
 # start the e-mail subject by "./play.it" to avoid it being flagged as spam
