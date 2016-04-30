@@ -15,7 +15,7 @@
 ###
 
 ###
-# conversion script for the Torchlight installer sold on GOG.com
+# conversion script for the Sid Meier's Alpha Centaury installer sold on GOG.com
 # build a .deb or .pkg.tar.gz package from the Windows installer
 # tested on Debian, should work on any .deb-based distribution
 # tested on Archlinux, should work on any pacman based distribution
